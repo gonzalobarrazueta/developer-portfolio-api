@@ -1,6 +1,7 @@
 package com.portfolio.services;
 
 import com.portfolio.config.NotionConfigProperties;
+import com.portfolio.models.Pages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -27,14 +28,14 @@ public class NotionService {
                 .bodyToMono(String.class);
     }
 
-    public String getPagesFromDatabase() {
+    public Pages getPagesFromDatabase() {
         return webClient
                 .post()
                 .uri("v1/databases/" + notionConfigProperties.getDatabaseId() + "/query")
                 .header("Content-Type", MediaType.APPLICATION_JSON_VALUE)
                 .bodyValue("")
                 .retrieve()
-                .bodyToMono(String.class)
+                .bodyToMono(Pages.class)
                 .block();
     }
 }

@@ -1,5 +1,6 @@
 package com.portfolio.controllers;
 
+import com.portfolio.models.Pages;
 import com.portfolio.services.NotionService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,7 @@ public class NotionController {
     }
 
     @GetMapping("")
-    public String getPages() {
+    public Pages getPages() {
         return this.notionService.getPagesFromDatabase();
     }
 }
