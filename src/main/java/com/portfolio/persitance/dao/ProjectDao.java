@@ -9,6 +9,6 @@ public interface ProjectDao {
     List<Project> getAll();
     Optional<Project> getById(Integer id);
     Project save(Project project);
-    Project update(Project project);
+    boolean update(Project project);
     boolean deleteById(Integer id);
 }

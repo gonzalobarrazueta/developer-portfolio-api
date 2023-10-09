@@ -32,8 +32,12 @@ public class ProjectDaoImpl implements ProjectDao {
     }
 
     @Override
-    public Project update(Project project) {
-        return projectRepository.save(project);
+    public boolean update(Project project) {
+        if (projectRepository.existsById(project.getId())) {
+            projectRepository.save(project);
+            return true;
+        }
+        return false;
     }
 
     @Override
