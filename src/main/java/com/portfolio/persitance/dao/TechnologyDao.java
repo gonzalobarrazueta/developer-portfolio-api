@@ -9,6 +9,6 @@ public interface TechnologyDao {
     List<Technology> getAll();
     Optional<Technology> getById(Integer id);
     Technology save(Technology technology);
-    Technology update(Technology technology);
+    boolean update(Technology technology);
     boolean deleteById(Integer id);
 }

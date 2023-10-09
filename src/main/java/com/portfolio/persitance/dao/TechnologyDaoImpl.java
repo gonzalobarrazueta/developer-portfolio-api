@@ -32,8 +32,12 @@ public class TechnologyDaoImpl implements TechnologyDao {
     }
 
     @Override
-    public Technology update(Technology technology) {
-        return technologyRepository.save(technology);
+    public boolean update(Technology technology) {
+        if (technologyRepository.existsById(technology.getId())) {
+            technologyRepository.save(technology);
+            return true;
+        }
+        return false;
     }
 
     @Override
