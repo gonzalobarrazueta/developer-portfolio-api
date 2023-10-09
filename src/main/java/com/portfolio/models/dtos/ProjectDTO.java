@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProjectDTO {
-    private Integer pageId;
+    private String pageId;
     private String title;
     private String description;
     private String imageUrl;

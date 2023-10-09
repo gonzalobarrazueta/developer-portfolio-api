@@ -17,7 +17,7 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(unique = true)
-    private Integer pageId;
+    private String pageId;
     private String title;
     private String description;
     private String imageUrl;
