@@ -1,7 +1,7 @@
 package com.portfolio.services;
 
 import com.portfolio.models.dtos.TechnologyDTO;
-import com.portfolio.models.dtos.TechnologyDTOMapper;
+import com.portfolio.models.dtos.TechnologyMapper;
 import com.portfolio.persitance.dao.TechnologyDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,19 +12,19 @@ import java.util.List;
 public class TechnologyService {
 
     private final TechnologyDao technologyDao;
-    private final TechnologyDTOMapper technologyDTOMapper;
+    private final TechnologyMapper technologyMapper;
 
     @Autowired
     public TechnologyService(TechnologyDao technologyDao,
-                             TechnologyDTOMapper technologyDTOMapper) {
+                             TechnologyMapper technologyMapper) {
         this.technologyDao = technologyDao;
-        this.technologyDTOMapper = technologyDTOMapper;
+        this.technologyMapper = technologyMapper;
     }
 
     public List<TechnologyDTO> getAllTechnologies() {
         return technologyDao.getAll()
                 .stream()
-                .map(technologyDTOMapper)
+                .map(technology -> technologyMapper.technologyToTechnologyDTO(technology))
                 .toList();
     }
 }
