@@ -3,6 +3,7 @@ package com.portfolio.persitance.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -17,4 +18,6 @@ public class Technology {
     private UUID id;
     @Column(unique = true)
     private String name;
+    @ManyToMany(mappedBy = "technologies")
+    private List<Project> projects;
 }

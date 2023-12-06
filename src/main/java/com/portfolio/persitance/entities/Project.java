@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -23,4 +24,11 @@ public class Project {
     private String title;
     private String description;
     private String imageUrl;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "project_technology",
+            joinColumns = @JoinColumn(name = "project_id"),
+            inverseJoinColumns = @JoinColumn(name = "technology_id")
+    )
+    private List<Technology> technologies;
 }
