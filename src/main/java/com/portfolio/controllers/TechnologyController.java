@@ -14,6 +14,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("api/v1/technologies")
+@CrossOrigin
 public class TechnologyController {
 
     private final TechnologyService technologyService;
