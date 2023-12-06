@@ -24,7 +24,10 @@ public class ProjectMapper {
                 project.getTitle(),
                 project.getDescription(),
                 project.getImageUrl(),
-                technologies
+                technologies,
+                project.getDemo(),
+                project.getGithub(),
+                project.getLive()
         );
     }
 
@@ -35,6 +38,9 @@ public class ProjectMapper {
         project.setTitle(projectDTO.getTitle());
         project.setDescription(projectDTO.getDescription());
         project.setImageUrl(projectDTO.getImageUrl());
+        project.setDemo(projectDTO.getDemo());
+        project.setGithub(projectDTO.getGithub());
+        project.setLive(projectDTO.getLive());
 
         return project;
     }

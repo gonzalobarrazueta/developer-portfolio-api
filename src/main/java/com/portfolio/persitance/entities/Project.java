@@ -31,4 +31,7 @@ public class Project {
             inverseJoinColumns = @JoinColumn(name = "technology_id")
     )
     private List<Technology> technologies;
+    private String demo;
+    private String github;
+    private String live;
 }

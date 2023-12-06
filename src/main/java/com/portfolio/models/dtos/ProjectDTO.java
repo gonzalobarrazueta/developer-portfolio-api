@@ -17,4 +17,7 @@ public class ProjectDTO {
     private String description;
     private String imageUrl;
     private List<TechnologyDTO> technologies;
+    private String demo;
+    private String github;
+    private String live;
 }
