@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public class TechnologyDaoImpl implements TechnologyDao {
@@ -22,7 +23,7 @@ public class TechnologyDaoImpl implements TechnologyDao {
     }
 
     @Override
-    public Optional<Technology> getById(Integer id) {
+    public Optional<Technology> getById(UUID id) {
         return technologyRepository.findById(id);
     }
 
@@ -41,7 +42,7 @@ public class TechnologyDaoImpl implements TechnologyDao {
     }
 
     @Override
-    public boolean deleteById(Integer id) {
+    public boolean deleteById(UUID id) {
         if (technologyRepository.existsById(id)) {
             technologyRepository.deleteById(id);
             return true;

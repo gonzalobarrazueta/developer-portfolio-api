@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ProjectService {
@@ -30,7 +31,7 @@ public class ProjectService {
                 .toList();
     }
 
-    public Optional<ProjectDTO> getProjectById(Integer id) {
+    public Optional<ProjectDTO> getProjectById(UUID id) {
         return projectDao.getById(id)
                 .map(project -> projectMapper.projectToProjectDTO(project));
     }
@@ -48,7 +49,7 @@ public class ProjectService {
         }
     }
 
-    public boolean delete(Integer id) {
+    public boolean delete(UUID id) {
         if (projectDao.deleteById(id)) {
             return true;
         } else {

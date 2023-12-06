@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("api/v1/technologies")
@@ -29,7 +30,7 @@ public class TechnologyController {
     }
 
     @GetMapping(value = "/{id}", produces = "application/json")
-    public ResponseEntity<Optional<TechnologyDTO>> getTechnologyById(@PathVariable Integer id) {
+    public ResponseEntity<Optional<TechnologyDTO>> getTechnologyById(@PathVariable UUID id) {
 
         Optional<TechnologyDTO> response = technologyService.getById(id);
 
@@ -57,7 +58,7 @@ public class TechnologyController {
     }
 
     @DeleteMapping(value = "/{id}", produces = "application/json")
-    public ResponseEntity delete(@PathVariable Integer id) {
+    public ResponseEntity delete(@PathVariable UUID id) {
         try {
             technologyService.delete(id);
         } catch (IllegalArgumentException e) {

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public class ProjectDaoImpl implements ProjectDao {
@@ -22,7 +23,7 @@ public class ProjectDaoImpl implements ProjectDao {
     }
 
     @Override
-    public Optional<Project> getById(Integer id) {
+    public Optional<Project> getById(UUID id) {
         return projectRepository.findById(id);
     }
 
@@ -41,7 +42,7 @@ public class ProjectDaoImpl implements ProjectDao {
     }
 
     @Override
-    public boolean deleteById(Integer id) {
+    public boolean deleteById(UUID id) {
         if (projectRepository.existsById(id)) {
             projectRepository.deleteById(id);
             return true;

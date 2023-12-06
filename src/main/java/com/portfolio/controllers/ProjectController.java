@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("api/v1/projects")
@@ -29,7 +30,7 @@ public class ProjectController {
     }
 
     @GetMapping(value = "/{id}", produces = "application/json")
-    public ResponseEntity<ProjectDTO> getProjectById(@PathVariable Integer id) {
+    public ResponseEntity<ProjectDTO> getProjectById(@PathVariable UUID id) {
 
         Optional<ProjectDTO> response = projectService.getProjectById(id);
 
@@ -57,7 +58,7 @@ public class ProjectController {
     }
 
     @DeleteMapping(value = "/{id}", produces = "application/json")
-    public ResponseEntity delete(@PathVariable Integer id) {
+    public ResponseEntity delete(@PathVariable UUID id) {
         try {
             projectService.delete(id);
         } catch (IllegalArgumentException e) {

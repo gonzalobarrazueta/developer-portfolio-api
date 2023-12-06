@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class TechnologyService {
@@ -30,7 +31,7 @@ public class TechnologyService {
                 .toList();
     }
 
-    public Optional<TechnologyDTO> getById(Integer id) {
+    public Optional<TechnologyDTO> getById(UUID id) {
         return technologyDao.getById(id)
                 .map(technology -> technologyMapper.technologyToTechnologyDTO(technology));
     }
@@ -51,7 +52,7 @@ public class TechnologyService {
         }
     }
 
-    public boolean delete (Integer id) {
+    public boolean delete (UUID id) {
         if (technologyDao.deleteById(id)) {
             return true;
         } else {

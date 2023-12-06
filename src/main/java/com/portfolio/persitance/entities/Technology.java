@@ -3,6 +3,8 @@ package com.portfolio.persitance.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "technology")
 @AllArgsConstructor
@@ -11,7 +13,7 @@ import lombok.*;
 @Setter
 public class Technology {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
     private String name;
 }
