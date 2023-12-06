@@ -22,7 +22,9 @@ public class Project {
     @Column(unique = true)
     private String pageId;
     private String title;
+    @Column(length = 1000)
     private String description;
+    @Column(length = 1000)
     private String imageUrl;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
