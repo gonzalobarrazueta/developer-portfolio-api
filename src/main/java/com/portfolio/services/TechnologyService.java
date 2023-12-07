@@ -59,4 +59,8 @@ public class TechnologyService {
             throw new IllegalArgumentException("Technology with id " + id + " does not exist");
         }
     }
+
+    public boolean existsByName(String name) {
+        return technologyDao.existsByName(name);
+    }
 }

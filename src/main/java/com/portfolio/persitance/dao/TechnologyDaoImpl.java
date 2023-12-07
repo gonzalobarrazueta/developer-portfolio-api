@@ -49,4 +49,9 @@ public class TechnologyDaoImpl implements TechnologyDao {
         }
         return false;
     }
+
+    @Override
+    public boolean existsByName(String name) {
+        return technologyRepository.existsByName(name);
+    }
 }

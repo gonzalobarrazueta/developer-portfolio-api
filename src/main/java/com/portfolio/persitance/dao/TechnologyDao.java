@@ -12,4 +12,5 @@ public interface TechnologyDao {
     Technology save(Technology technology);
     boolean update(Technology technology);
     boolean deleteById(UUID id);
+    boolean existsByName(String name);
 }
