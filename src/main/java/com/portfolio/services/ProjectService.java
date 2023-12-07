@@ -36,9 +36,8 @@ public class ProjectService {
                 .map(project -> projectMapper.projectToProjectDTO(project));
     }
 
-    public ProjectDTO save(ProjectDTO projectDTO) {
-        Project project = projectMapper.projectDTOToProject(projectDTO);
-        return projectMapper.projectToProjectDTO(projectDao.save(project));
+    public Project save(ProjectDTO projectDTO) {
+        return projectDao.save(projectMapper.projectDTOToProject(projectDTO));
     }
 
     public boolean update(Project project) {

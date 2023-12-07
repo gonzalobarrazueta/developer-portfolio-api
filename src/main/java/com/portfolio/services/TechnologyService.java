@@ -36,12 +36,8 @@ public class TechnologyService {
                 .map(technology -> technologyMapper.technologyToTechnologyDTO(technology));
     }
 
-    public TechnologyDTO save(TechnologyDTO technologyDTO) {
-        return technologyMapper.technologyToTechnologyDTO(
-                technologyDao.save(
-                        technologyMapper.technologyDTOToTechnology(technologyDTO)
-                )
-        );
+    public Technology save(TechnologyDTO technologyDTO) {
+        return technologyDao.save(technologyMapper.technologyDTOToTechnology(technologyDTO));
     }
 
     public boolean update(Technology technology) {
