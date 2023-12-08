@@ -1,5 +1,6 @@
 package com.portfolio.persitance.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,6 +19,7 @@ public class Technology {
     private UUID id;
     @Column(unique = true)
     private String name;
+    @JsonIgnore
     @ManyToMany(mappedBy = "technologies")
     private List<Project> projects;
 }
