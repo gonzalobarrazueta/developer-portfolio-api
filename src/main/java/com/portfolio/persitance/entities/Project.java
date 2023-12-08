@@ -26,11 +26,11 @@ public class Project {
     private String description;
     @Column(length = 1000)
     private String imageUrl;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(
             name = "project_technology",
-            joinColumns = @JoinColumn(name = "project_id"),
-            inverseJoinColumns = @JoinColumn(name = "technology_id")
+            joinColumns = @JoinColumn(name = "project_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "technology_id", referencedColumnName = "id")
     )
     private List<Technology> technologies;
     private String demo;
