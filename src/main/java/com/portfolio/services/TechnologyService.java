@@ -31,13 +31,16 @@ public class TechnologyService {
                 .toList();
     }
 
-    public Optional<TechnologyDTO> getById(UUID id) {
-        return technologyDao.getById(id)
-                .map(technology -> technologyMapper.technologyToTechnologyDTO(technology));
+    public Optional<Technology> getById(UUID id) {
+        return technologyDao.getById(id);
     }
 
-    public Technology save(TechnologyDTO technologyDTO) {
-        return technologyDao.save(technologyMapper.technologyDTOToTechnology(technologyDTO));
+    public Technology save(Technology tech) {
+        if (technologyDao.existsByName(tech.getName())) {
+            return technologyDao.getByName(tech.getName()).get();
+        } else {
+            return technologyDao.save(tech);
+        }
     }
 
     public boolean update(Technology technology) {

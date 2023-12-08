@@ -31,21 +31,20 @@ public class TechnologyController {
     }
 
     @GetMapping(value = "/{id}", produces = "application/json")
-    public ResponseEntity<Optional<TechnologyDTO>> getTechnologyById(@PathVariable UUID id) {
+    public ResponseEntity<Technology> getTechnologyById(@PathVariable UUID id) {
 
-        Optional<TechnologyDTO> response = technologyService.getById(id);
+        Optional<Technology> response = technologyService.getById(id);
 
         if (response.isPresent()) {
-            return ResponseEntity.ok(response);
+            return ResponseEntity.ok(response.get());
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
     @PostMapping(value = "", produces = "application/json")
-    public ResponseEntity<Void> save(@RequestBody TechnologyDTO technologyDTO) {
-        technologyService.save(technologyDTO);
-        return ResponseEntity.created(URI.create("api/v1/technologies")).build();
+    public ResponseEntity<Technology> save(@RequestBody Technology tech) {
+        return ResponseEntity.ok(technologyService.save(tech));
     }
 
     @PutMapping(value = "", produces = "application/json")
