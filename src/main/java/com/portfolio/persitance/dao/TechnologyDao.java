@@ -1,6 +1,7 @@
 package com.portfolio.persitance.dao;
 
 import com.portfolio.persitance.entities.Technology;
+import io.micrometer.observation.ObservationFilter;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,4 +14,5 @@ public interface TechnologyDao {
     boolean update(Technology technology);
     boolean deleteById(UUID id);
     boolean existsByName(String name);
+    Optional<Technology> getByName(String name);
 }

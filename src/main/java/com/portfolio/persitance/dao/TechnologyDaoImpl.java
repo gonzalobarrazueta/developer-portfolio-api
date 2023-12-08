@@ -54,4 +54,9 @@ public class TechnologyDaoImpl implements TechnologyDao {
     public boolean existsByName(String name) {
         return technologyRepository.existsByName(name);
     }
+
+    @Override
+    public Optional<Technology> getByName(String name) {
+        return technologyRepository.findByName(name);
+    }
 }
