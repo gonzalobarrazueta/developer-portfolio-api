@@ -2,12 +2,14 @@ package com.portfolio.controllers;
 
 import com.portfolio.models.dtos.ProjectDTO;
 import com.portfolio.persitance.entities.Project;
+import com.portfolio.persitance.entities.Technology;
 import com.portfolio.services.ProjectService;
+import com.portfolio.services.TechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -18,10 +20,12 @@ import java.util.UUID;
 public class ProjectController {
 
     private final ProjectService projectService;
+    private final TechnologyService technologyService;
 
     @Autowired
-    public ProjectController(ProjectService projectService) {
+    public ProjectController(ProjectService projectService, TechnologyService technologyService) {
         this.projectService = projectService;
+        this.technologyService = technologyService;
     }
 
     @GetMapping(value = "", produces = "application/json")
@@ -31,9 +35,9 @@ public class ProjectController {
     }
 
     @GetMapping(value = "/{id}", produces = "application/json")
-    public ResponseEntity<ProjectDTO> getProjectById(@PathVariable UUID id) {
+    public ResponseEntity<Project> getProjectById(@PathVariable UUID id) {
 
-        Optional<ProjectDTO> response = projectService.getProjectById(id);
+        Optional<Project> response = projectService.getProjectById(id);
 
         if (response.isPresent()) {
             return ResponseEntity.ok(response.get());
@@ -43,9 +47,17 @@ public class ProjectController {
     }
 
     @PostMapping(value = "", produces = "application/json")
-    public ResponseEntity<ProjectDTO> save(@RequestBody ProjectDTO projectDTO) {
-        projectService.save(projectDTO);
-        return ResponseEntity.created(URI.create("api/v1/projects")).build();
+    public ResponseEntity save(@RequestBody Project project) {
+
+        List<Technology> projectTechnologies = new ArrayList<>();
+
+        for (Technology technology : project.getTechnologies()) {
+            projectTechnologies.add(technologyService.save(technology));
+        }
+
+        project.setTechnologies(projectTechnologies);
+
+        return ResponseEntity.ok(projectService.save(project));
     }
 
     @PutMapping(value = "", produces = "application/json")

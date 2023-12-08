@@ -31,13 +31,12 @@ public class ProjectService {
                 .toList();
     }
 
-    public Optional<ProjectDTO> getProjectById(UUID id) {
-        return projectDao.getById(id)
-                .map(project -> projectMapper.projectToProjectDTO(project));
+    public Optional<Project> getProjectById(UUID id) {
+        return projectDao.getById(id);
     }
 
-    public Project save(ProjectDTO projectDTO) {
-        return projectDao.save(projectMapper.projectDTOToProject(projectDTO));
+    public Project save(Project project) {
+        return projectDao.save(project);
     }
 
     public boolean update(Project project) {
