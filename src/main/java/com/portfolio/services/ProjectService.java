@@ -36,7 +36,11 @@ public class ProjectService {
     }
 
     public Project save(Project project) {
-        return projectDao.save(project);
+        if (projectDao.existsByPageId(project.getPageId())) {
+            return projectDao.getByPageId(project.getPageId()).get();
+        } else {
+            return projectDao.save(project);
+        }
     }
 
     public boolean update(Project project) {
