@@ -57,6 +57,6 @@ public class TechnologyDaoImpl implements TechnologyDao {
 
     @Override
     public Optional<Technology> getByName(String name) {
-        return technologyRepository.findByName(name);
+        return technologyRepository.getByName(name);
     }
 }
