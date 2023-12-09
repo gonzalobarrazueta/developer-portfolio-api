@@ -49,4 +49,14 @@ public class ProjectDaoImpl implements ProjectDao {
         }
         return false;
     }
+
+    @Override
+    public boolean existsByPageId(String pageId) {
+        return projectRepository.existsByPageId(pageId);
+    }
+
+    @Override
+    public Optional<Project> getByPageId(String pageId) {
+        return projectRepository.findByPageId(pageId);
+    }
 }

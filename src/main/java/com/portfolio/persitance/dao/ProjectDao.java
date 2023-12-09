@@ -12,4 +12,6 @@ public interface ProjectDao {
     Project save(Project project);
     boolean update(Project project);
     boolean deleteById(UUID id);
+    boolean existsByPageId(String pageId);
+    Optional<Project> getByPageId(String pageId);
 }
